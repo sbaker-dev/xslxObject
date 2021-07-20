@@ -31,7 +31,7 @@ class XlsxObject:
         sheet_data: This contains the data from all the sheets in a sheet-column-row format.
 
         :param read_file: The xlsx file path you want to read in to an object
-        :type read_file: str
+        :type read_file: str | Path
 
         :param file_headers: If the xlsx file has file headers or not
         :type file_headers: bool
