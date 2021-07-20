@@ -16,13 +16,9 @@ VERSION = "0.01.0"
 PYTHON_REQUIRES = ">=3.6"
 
 INSTALL_REQUIRES = [
-
-]
-
-PACKAGES = [
-    "csvObject",
     "miscSupports",
     "openpyxl"
+
 ]
 
 CLASSIFIERS = [
@@ -33,7 +29,7 @@ CLASSIFIERS = [
 
 if __name__ == "__main__":
 
-    from setuptools import setup
+    from setuptools import setup, find_packages
 
     import sys
 
@@ -54,7 +50,6 @@ if __name__ == "__main__":
         download_url=DOWNLOAD_URL,
         python_requires=PYTHON_REQUIRES,
         install_requires=INSTALL_REQUIRES,
-        packages=PACKAGES,
+        packages=find_packages(),
         classifiers=CLASSIFIERS
     )
-
