@@ -188,7 +188,7 @@ class XlsxObject:
             row_start = 2
         else:
             row_start = 1
-        row_end = self.sheet_row_count[sheet_index]
+        row_end = self.sheet_row_count[sheet_index] + 1
 
         # Extract the data from the sheet
         sheet_data = [[sheet[f"{get_column_letter(col_i)}{row_i}"].value for row_i in range(row_start, row_end)]
