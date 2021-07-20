@@ -10,7 +10,11 @@ class SheetData:
 
         # Set data
         self.column_data = data
-        self.row_data = flip_list(data)
+
+        try:
+            self.row_data = flip_list(data)
+        except AssertionError:
+            self.row_data = []
 
         # Counts
         self.col_count = len(self.column_data)
