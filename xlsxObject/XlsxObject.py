@@ -102,7 +102,7 @@ class XlsxObject:
         """
 
         if self._file_headers:
-            sheet_headers = [[sheet[f"{get_column_letter(i)}{1}"].value for i in range(1, sheet_length)]
+            sheet_headers = [[sheet[f"{get_column_letter(i)}{1}"].value for i in range(1, sheet_length + 1)]
                              for sheet_length, sheet in zip(self.sheet_col_count, self._workbook.worksheets)]
 
         else:
