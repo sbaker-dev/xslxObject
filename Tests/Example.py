@@ -12,4 +12,7 @@ print(a.sheet_row_count)
 print(a.sheet_data[0])
 
 
+for row in a.sheet_data[0].row_data:
+    print(row)
+
 print(a.sheet_data[1])

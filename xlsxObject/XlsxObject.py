@@ -1,3 +1,5 @@
+from .SheetData import SheetData
+
 from openpyxl.utils import get_column_letter
 from miscSupports import validate_path
 from openpyxl import load_workbook
@@ -47,8 +49,6 @@ class XlsxObject:
         self.sheet_row_count = self._count_sheet_columns()
         self.sheet_headers = self._set_sheet_header_list()
         self.sheet_data = self._set_sheet_data()
-
-        # todo extract the data base element from csvObject so that each sheet is a csvObject
 
     def __repr__(self):
         """Human readable print"""
@@ -115,7 +115,7 @@ class XlsxObject:
         within a given sheet. This means that the end result is a nested list of sheet-column-row.
 
         :return: The sheet data for each given sheet
-        :rtype: list
+        :rtype: list[SheetData]
         """
 
         return [self._set_data(sheet, sheet_index) for sheet_index, sheet in enumerate(self._workbook.worksheets)]
@@ -180,7 +180,7 @@ class XlsxObject:
         :type sheet_index: int
 
         :return: A column-row list set of all the content within the sheet
-        :rtype: list
+        :rtype: SheetData
         """
 
         # Set row count based on if headers are include so that headers are not within data rows
@@ -190,5 +190,9 @@ class XlsxObject:
             row_start = 1
         row_end = self.sheet_row_count[sheet_index]
 
-        return [[sheet[f"{get_column_letter(col_i)}{row_i}"].value for row_i in range(row_start, row_end)]
-                for col_i in range(1, self.sheet_col_count[sheet_index] + 1)]
+        # Extract the data from the sheet
+        sheet_data = [[sheet[f"{get_column_letter(col_i)}{row_i}"].value for row_i in range(row_start, row_end)]
+                      for col_i in range(1, self.sheet_col_count[sheet_index] + 1)]
+
+        # Return the sheet data type SheetData
+        return SheetData(self.sheet_names[sheet_index], self.sheet_headers[sheet_index], sheet_data)
