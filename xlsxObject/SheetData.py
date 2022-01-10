@@ -1,8 +1,9 @@
 from miscSupports import flip_list
+from typing import List
 
 
 class SheetData:
-    def __init__(self, sheet_name, sheet_headers, data):
+    def __init__(self, sheet_name: str, sheet_headers: List[str], data: List[List[str]]):
 
         # Basic info
         self.name = sheet_name

@@ -12,7 +12,7 @@ MAINTAINER = 'Samuel Baker'
 MAINTAINER_EMAIL = 'samuelbaker.researcher@gmail.com'
 LICENSE = 'MIT'
 DOWNLOAD_URL = "https://github.com/sbaker-dev/xslxObject"
-VERSION = "0.02.2"
+VERSION = "0.03.0"
 PYTHON_REQUIRES = ">=3.6"
 
 INSTALL_REQUIRES = [
